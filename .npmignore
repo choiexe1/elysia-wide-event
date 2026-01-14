@@ -1,4 +1,5 @@
 src/
+example/
 tsconfig.json
 tsconfig.build.json
 bun.lock

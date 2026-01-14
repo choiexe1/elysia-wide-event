@@ -18,7 +18,3 @@ export function formatData(data: LogData): string {
     .map(([k, v]) => `${k}=${JSON.stringify(v)}`)
     .join(" ");
 }
-
-export function isProduction(): boolean {
-  return process.env["NODE_ENV"] === "production";
-}

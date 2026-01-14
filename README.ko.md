@@ -12,7 +12,7 @@
 ## 기능
 
 - **컨텍스트 수집**: `wideEvent.set()`으로 요청 생명주기 전반에 걸쳐 데이터 수집
-- **환경 인식**: 개발 환경에서는 컬러 출력, 프로덕션에서는 JSON
+- **유연한 출력**: 컬러 출력 또는 JSON - 선택 가능
 - **Request ID**: `x-request-id` 헤더에서 추출하거나 자동 생성
 - **성능 측정**: 요청 처리 시간 자동 추적
 
@@ -43,7 +43,7 @@ const app = new Elysia()
 
 ## 출력
 
-### 개발 환경
+### Pretty 출력 (기본값)
 
 ```
 [14:23:01] POST /users 201 45ms
@@ -51,7 +51,7 @@ const app = new Elysia()
   result: userId="abc-123"
 ```
 
-### 프로덕션 (`NODE_ENV=production`)
+### JSON 출력 (`json: true`)
 
 ```json
 {
@@ -72,15 +72,15 @@ const app = new Elysia()
 wideEvent({
   generateRequestId: () => crypto.randomUUID(),
   requestIdHeader: "x-request-id",
-  forceJson: false,
+  json: false,
 });
 ```
 
-| 옵션                | 타입           | 기본값              | 설명                           |
-| ------------------- | -------------- | ------------------- | ------------------------------ |
-| `generateRequestId` | `() => string` | `crypto.randomUUID` | 커스텀 Request ID 생성기       |
-| `requestIdHeader`   | `string`       | `"x-request-id"`    | Request ID를 가져올 헤더       |
-| `forceJson`         | `boolean`      | `false`             | 개발 환경에서도 JSON 출력 강제 |
+| 옵션                | 타입           | 기본값              | 설명                      |
+| ------------------- | -------------- | ------------------- | ------------------------- |
+| `generateRequestId` | `() => string` | `crypto.randomUUID` | 커스텀 Request ID 생성기  |
+| `requestIdHeader`   | `string`       | `"x-request-id"`    | Request ID를 가져올 헤더  |
+| `json`              | `boolean`      | `false`             | Pretty 대신 JSON으로 출력 |
 
 ## API
 

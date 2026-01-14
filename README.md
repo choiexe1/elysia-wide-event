@@ -14,7 +14,7 @@ Inspired by [Logging Sucks](https://loggingsucks.com/) - the wide event pattern 
 ## Features
 
 - **Context Accumulation**: Collect data throughout request lifecycle via `wideEvent.set()`
-- **Environment Aware**: Colored output in development, JSON in production
+- **Flexible Output**: Pretty colored output or JSON - you choose
 - **Request ID**: Auto-generates or extracts from `x-request-id` header
 - **Performance Metrics**: Automatic request duration tracking
 
@@ -45,7 +45,7 @@ const app = new Elysia()
 
 ## Output
 
-### Development
+### Pretty Output (default)
 
 ```
 [14:23:01] POST /users 201 45ms
@@ -53,7 +53,7 @@ const app = new Elysia()
   result: userId="abc-123"
 ```
 
-### Production (`NODE_ENV=production`)
+### JSON Output (`json: true`)
 
 ```json
 {
@@ -74,15 +74,15 @@ const app = new Elysia()
 wideEvent({
   generateRequestId: () => crypto.randomUUID(),
   requestIdHeader: "x-request-id",
-  forceJson: false,
+  json: false,
 });
 ```
 
-| Option              | Type           | Default             | Description                      |
-| ------------------- | -------------- | ------------------- | -------------------------------- |
-| `generateRequestId` | `() => string` | `crypto.randomUUID` | Custom request ID generator      |
-| `requestIdHeader`   | `string`       | `"x-request-id"`    | Header for incoming request ID   |
-| `forceJson`         | `boolean`      | `false`             | Force JSON output in development |
+| Option              | Type           | Default             | Description                             |
+| ------------------- | -------------- | ------------------- | --------------------------------------- |
+| `generateRequestId` | `() => string` | `crypto.randomUUID` | Custom request ID generator             |
+| `requestIdHeader`   | `string`       | `"x-request-id"`    | Header for incoming request ID          |
+| `json`              | `boolean`      | `false`             | Output as JSON instead of pretty format |
 
 ## API
 

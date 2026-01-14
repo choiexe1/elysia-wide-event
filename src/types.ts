@@ -28,10 +28,10 @@ export interface WideEventOptions {
   requestIdHeader?: string;
 
   /**
-   * Force JSON output regardless of NODE_ENV
-   * @default false (uses pretty format in development)
+   * Output format: true for JSON, false for pretty colored output
+   * @default false
    */
-  forceJson?: boolean;
+  json?: boolean;
 }
 
 export interface WideEventRecord {

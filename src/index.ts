@@ -1,7 +1,6 @@
 import { Elysia } from "elysia";
 import type { WideEventOptions, FlushableLogger } from "./types";
 import { createLogger } from "./logger";
-import { isProduction } from "./formatter";
 
 export type {
   LogData,
@@ -14,7 +13,7 @@ export const wideEvent = (options: WideEventOptions = {}) => {
   const {
     generateRequestId = () => crypto.randomUUID(),
     requestIdHeader = "x-request-id",
-    forceJson = false,
+    json = false,
   } = options;
 
   return new Elysia({ name: "elysia-wide-event" })
@@ -23,12 +22,11 @@ export const wideEvent = (options: WideEventOptions = {}) => {
         ctx.request.headers.get(requestIdHeader) ?? generateRequestId();
       const method = ctx.request.method;
       const path = new URL(ctx.request.url).pathname;
-      const useJson = forceJson || isProduction();
       const wideEvent: FlushableLogger = createLogger(
         requestId,
         method,
         path,
-        useJson,
+        json,
       );
       return { wideEvent, requestId };
     })

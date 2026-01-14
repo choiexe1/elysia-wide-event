@@ -1,5 +1,6 @@
 src/
-example/
+docs/
+images/
 tsconfig.json
 tsconfig.build.json
 bun.lock

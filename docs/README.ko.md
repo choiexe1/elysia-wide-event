@@ -2,12 +2,13 @@
 
 [![npm version](https://img.shields.io/npm/v/elysia-wide-event.svg)](https://www.npmjs.com/package/elysia-wide-event)
 [![license](https://img.shields.io/npm/l/elysia-wide-event.svg)](https://github.com/choiexe1/elysia-wide-event/blob/main/LICENSE)
+[![English](https://img.shields.io/badge/lang-English-blue.svg)](../README.md)
 
 [Elysia](https://elysiajs.com)를 위한 Wide Event 로깅 플러그인. 요청의 모든 컨텍스트를 하나의 구조화된 로그 라인으로 집계하여 관측성을 높입니다.
 
 [Logging Sucks](https://loggingsucks.com/)에서 영감을 받았습니다 - 디버깅을 즐겁게 만드는 Wide Event 패턴.
 
-![elysia-wide-event output](./image.png)
+![elysia-wide-event output](../images/image.png)
 
 > **Bun + Elysia 전용.** 이 플러그인은 Bun 런타임과 Elysia 프레임워크 전용으로 설계되었습니다. Node.js는 지원하지 않습니다.
 
@@ -46,26 +47,6 @@ const app = new Elysia()
 ## 출력
 
 위 스크린샷 참조. 기본값은 컬러 출력, `json: true` 옵션으로 JSON 출력.
-[14:23:01] POST /users 201 45ms
-user: email="test@example.com"
-result: userId="abc-123"
-
-````
-
-### JSON 출력 (`json: true`)
-
-```json
-{
-  "timestamp": "2024-01-14T14:23:01.000Z",
-  "request_id": "8b3f4d...",
-  "method": "POST",
-  "path": "/users",
-  "status": 201,
-  "duration_ms": 45,
-  "user": { "email": "test@example.com" },
-  "result": { "userId": "abc-123" }
-}
-````
 
 ## 옵션
 

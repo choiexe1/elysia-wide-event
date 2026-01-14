@@ -1,5 +1,7 @@
 # elysia-wide-event
 
+[한국어](./README.ko.md)
+
 [![npm version](https://img.shields.io/npm/v/elysia-wide-event.svg)](https://www.npmjs.com/package/elysia-wide-event)
 [![license](https://img.shields.io/npm/l/elysia-wide-event.svg)](https://github.com/choiexe1/elysia-wide-event/blob/main/LICENSE)
 

@@ -1,7 +1,7 @@
 # elysia-wide-event
 
-[![npm version](https://img.shields.io/npm/v/elysia-wide-event.svg)](https://www.npmjs.com/package/elysia-wide-event)
-[![license](https://img.shields.io/npm/l/elysia-wide-event.svg)](https://github.com/choiexe1/elysia-wide-event/blob/main/LICENSE)
+[![license](https://img.shields.io/github/license/choiexe1/elysia-wide-event)](./LICENSE)
+[![Bun](https://img.shields.io/badge/Bun-%23000000.svg?logo=bun&logoColor=white)](https://bun.sh)
 [![한국어](https://img.shields.io/badge/lang-한국어-blue.svg)](./docs/README.ko.md)
 
 Wide event logging plugin for [Elysia](https://elysiajs.com). Aggregates all request context into a single structured log line for better observability.

@@ -1,7 +1,7 @@
 # elysia-wide-event
 
-[![npm version](https://img.shields.io/npm/v/elysia-wide-event.svg)](https://www.npmjs.com/package/elysia-wide-event)
-[![license](https://img.shields.io/npm/l/elysia-wide-event.svg)](https://github.com/choiexe1/elysia-wide-event/blob/main/LICENSE)
+[![license](https://img.shields.io/github/license/choiexe1/elysia-wide-event)](../LICENSE)
+[![Bun](https://img.shields.io/badge/Bun-%23000000.svg?logo=bun&logoColor=white)](https://bun.sh)
 [![English](https://img.shields.io/badge/lang-English-blue.svg)](../README.md)
 
 [Elysia](https://elysiajs.com)를 위한 Wide Event 로깅 플러그인. 요청의 모든 컨텍스트를 하나의 구조화된 로그 라인으로 집계하여 관측성을 높입니다.

@@ -138,9 +138,6 @@ class RequestEventLogger implements EventLogger {
 
     if (this.errorData) {
       event.error = this.errorData;
-    }
-
-    if (this.errorData) {
       console.error(JSON.stringify(event));
     } else {
       console.log(JSON.stringify(event));
@@ -165,18 +162,18 @@ export const wideEvent = (options: WideEventOptions = {}) => {
         ctx.request.headers.get(requestIdHeader) ?? generateRequestId();
       const method = ctx.request.method;
       const path = new URL(ctx.request.url).pathname;
-      const event: FlushableEventLogger = new RequestEventLogger(
+      const wideEvent: FlushableEventLogger = new RequestEventLogger(
         requestId,
         method,
         path,
         useJson,
       );
-      return { event, requestId };
+      return { wideEvent, requestId };
     })
-    .onAfterResponse({ as: "global" }, ({ event, set }) => {
-      if (!event) return;
+    .onAfterResponse({ as: "global" }, ({ wideEvent, set }) => {
+      if (!wideEvent) return;
       const status = typeof set.status === "number" ? set.status : 200;
-      (event as FlushableEventLogger).flush(status);
+      (wideEvent as FlushableEventLogger).flush(status);
     });
 };
 

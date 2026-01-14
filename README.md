@@ -28,11 +28,11 @@ import { wideEvent } from "elysia-wide-event";
 
 const app = new Elysia()
   .use(wideEvent())
-  .post("/users", ({ event, body }) => {
-    event.set("user", { email: body.email });
+  .post("/users", ({ wideEvent, body }) => {
+    wideEvent.set("user", { email: body.email });
 
     const userId = "abc-123";
-    event.set("result", { userId });
+    wideEvent.set("result", { userId });
 
     return { success: true };
   })
@@ -82,20 +82,20 @@ wideEvent({
 
 ## API
 
-### `event.set(key, data)`
+### `wideEvent.set(key, data)`
 
 Add context to the current request log.
 
 ```typescript
-event.set("auth", { userId: "123", role: "admin" });
+wideEvent.set("auth", { userId: "123", role: "admin" });
 ```
 
-### `event.error({ type, message })`
+### `wideEvent.error({ type, message })`
 
 Log error details.
 
 ```typescript
-event.error({ type: "ValidationError", message: "Invalid email" });
+wideEvent.error({ type: "ValidationError", message: "Invalid email" });
 ```
 
 ## License

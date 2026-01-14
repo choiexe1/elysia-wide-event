@@ -1,15 +1,17 @@
 # elysia-wide-event
 
 [![npm version](https://img.shields.io/npm/v/elysia-wide-event.svg)](https://www.npmjs.com/package/elysia-wide-event)
-[![license](https://img.shields.io/npm/l/elysia-wide-event.svg)](https://github.com/code-yeongyu/elysia-wide-event/blob/main/LICENSE)
-[![Bun](https://img.shields.io/badge/Bun-%23000000.svg?style=flat&logo=bun&logoColor=white)](https://bun.sh)
-[![Elysia](https://img.shields.io/badge/Elysia-black?logo=elysia)](https://elysiajs.com)
+[![license](https://img.shields.io/npm/l/elysia-wide-event.svg)](https://github.com/choiexe1/elysia-wide-event/blob/main/LICENSE)
 
-Wide event logging plugin for Elysia. Aggregates all request context into a single structured log line for better observability.
+Wide event logging plugin for [Elysia](https://elysiajs.com). Aggregates all request context into a single structured log line for better observability.
+
+Inspired by [Logging Sucks](https://loggingsucks.com/) - the wide event pattern that makes debugging actually enjoyable.
+
+> **Bun + Elysia only.** This plugin is designed specifically for the Bun runtime and Elysia framework. Node.js is not supported.
 
 ## Features
 
-- **Context Accumulation**: Collect data throughout request lifecycle via `event.set()`
+- **Context Accumulation**: Collect data throughout request lifecycle via `wideEvent.set()`
 - **Environment Aware**: Colored output in development, JSON in production
 - **Request ID**: Auto-generates or extracts from `x-request-id` header
 - **Performance Metrics**: Automatic request duration tracking
@@ -97,6 +99,11 @@ Log error details.
 ```typescript
 wideEvent.error({ type: "ValidationError", message: "Invalid email" });
 ```
+
+## Requirements
+
+- Bun >= 1.0.0
+- Elysia >= 1.0.0
 
 ## License
 

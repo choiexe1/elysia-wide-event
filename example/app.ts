@@ -2,7 +2,7 @@ import { Elysia } from "elysia";
 import { wideEvent } from "../src";
 
 const app = new Elysia()
-  .use(wideEvent())
+  .use(wideEvent({}))
   .post("/users", ({ wideEvent, body }) => {
     wideEvent.set("user", { email: (body as { email: string }).email });
 

@@ -7,6 +7,8 @@
 
 [Logging Sucks](https://loggingsucks.com/)에서 영감을 받았습니다 - 디버깅을 즐겁게 만드는 Wide Event 패턴.
 
+![elysia-wide-event output](./image.png)
+
 > **Bun + Elysia 전용.** 이 플러그인은 Bun 런타임과 Elysia 프레임워크 전용으로 설계되었습니다. Node.js는 지원하지 않습니다.
 
 ## 기능
@@ -43,13 +45,12 @@ const app = new Elysia()
 
 ## 출력
 
-### Pretty 출력 (기본값)
-
-```
+위 스크린샷 참조. 기본값은 컬러 출력, `json: true` 옵션으로 JSON 출력.
 [14:23:01] POST /users 201 45ms
-  user: email="test@example.com"
-  result: userId="abc-123"
-```
+user: email="test@example.com"
+result: userId="abc-123"
+
+````
 
 ### JSON 출력 (`json: true`)
 
@@ -64,7 +65,7 @@ const app = new Elysia()
   "user": { "email": "test@example.com" },
   "result": { "userId": "abc-123" }
 }
-```
+````
 
 ## 옵션
 

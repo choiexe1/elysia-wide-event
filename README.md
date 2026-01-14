@@ -9,6 +9,8 @@ Wide event logging plugin for [Elysia](https://elysiajs.com). Aggregates all req
 
 Inspired by [Logging Sucks](https://loggingsucks.com/) - the wide event pattern that makes debugging actually enjoyable.
 
+![elysia-wide-event output](./image.png)
+
 > **Bun + Elysia only.** This plugin is designed specifically for the Bun runtime and Elysia framework. Node.js is not supported.
 
 ## Features
@@ -45,13 +47,12 @@ const app = new Elysia()
 
 ## Output
 
-### Pretty Output (default)
-
-```
+See the screenshot above for output examples. Pretty colored output by default, JSON with `json: true` option.
 [14:23:01] POST /users 201 45ms
-  user: email="test@example.com"
-  result: userId="abc-123"
-```
+user: email="test@example.com"
+result: userId="abc-123"
+
+````
 
 ### JSON Output (`json: true`)
 
@@ -66,7 +67,7 @@ const app = new Elysia()
   "user": { "email": "test@example.com" },
   "result": { "userId": "abc-123" }
 }
-```
+````
 
 ## Options
 

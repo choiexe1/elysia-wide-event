@@ -1,0 +1,46 @@
+{
+  "name": "elysia-wide-event",
+  "version": "0.1.0",
+  "description": "Wide event logging plugin for Elysia - structured logging with request context",
+  "author": "Jay Choi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/choiexe1/elysia-wide-event"
+  },
+  "keywords": [
+    "elysia",
+    "plugin",
+    "logging",
+    "wide-event",
+    "structured-logging",
+    "observability",
+    "bun"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "bun build ./src/index.ts --outdir ./dist --target bun && bun run build:types",
+    "build:types": "tsc --emitDeclarationOnly --declaration --outDir dist",
+    "prepublishOnly": "bun run build"
+  },
+  "peerDependencies": {
+    "elysia": ">=1.0.0"
+  },
+  "devDependencies": {
+    "bun-types": "latest",
+    "elysia": "latest",
+    "typescript": "^5.0.0"
+  }
+}

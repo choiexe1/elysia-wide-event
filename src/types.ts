@@ -16,22 +16,51 @@ export interface WideEventLogger {
 
 export interface WideEventOptions {
   /**
-   * Custom request ID generator
+   * Custom request ID generator.
    * @default crypto.randomUUID()
+   * @example
+   * ```ts
+   * wideEvent({
+   *   generateRequestId: () => `req-${Date.now()}`
+   * })
+   * ```
    */
   generateRequestId?: () => string;
 
   /**
-   * Request ID header name to use from incoming request
+   * Header name for incoming request ID.
    * @default "x-request-id"
+   * @example
+   * ```ts
+   * wideEvent({
+   *   requestIdHeader: "x-correlation-id"
+   * })
+   * ```
    */
   requestIdHeader?: string;
 
   /**
-   * Output format: true for JSON, false for pretty colored output
+   * Output as JSON instead of pretty colored format.
    * @default false
+   * @example
+   * ```ts
+   * wideEvent({
+   *   json: true
+   * })
+   * ```
    */
   json?: boolean;
+
+  /**
+   * Custom data to log on server startup. Server URL is auto-included.
+   * @example
+   * ```ts
+   * wideEvent({
+   *   start: { env: "production", version: "1.0.0" }
+   * })
+   * ```
+   */
+  start?: LogData;
 }
 
 export interface WideEventRecord {

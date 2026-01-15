@@ -1,6 +1,6 @@
 import { Elysia } from "elysia";
 import type { WideEventOptions, FlushableLogger } from "./types";
-import { createLogger } from "./logger";
+import { createLogger, logServerStart } from "./logger";
 
 export type {
   LogData,
@@ -14,9 +14,15 @@ export const wideEvent = (options: WideEventOptions = {}) => {
     generateRequestId = () => crypto.randomUUID(),
     requestIdHeader = "x-request-id",
     json = false,
+    start,
   } = options;
 
   return new Elysia({ name: "elysia-wide-event" })
+    .onStart(({ server }) => {
+      if (start && server) {
+        logServerStart(server.url.href, start, json);
+      }
+    })
     .derive({ as: "global" }, (ctx) => {
       const requestId =
         ctx.request.headers.get(requestIdHeader) ?? generateRequestId();

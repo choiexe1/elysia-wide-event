@@ -1,6 +1,6 @@
 import type { LogData } from "./types";
 
-export const colors = {
+const colors = {
   reset: "\x1b[0m",
   dim: "\x1b[2m",
   green: "\x1b[32m",
@@ -9,12 +9,14 @@ export const colors = {
   blue: "\x1b[34m",
 } as const;
 
-export function formatTime(): string {
+function formatTime(): string {
   return new Date().toISOString().slice(11, 19);
 }
 
-export function formatData(data: LogData): string {
+function formatData(data: LogData): string {
   return Object.entries(data)
     .map(([k, v]) => `${k}=${JSON.stringify(v)}`)
     .join(" ");
 }
+
+export { colors, formatTime, formatData };

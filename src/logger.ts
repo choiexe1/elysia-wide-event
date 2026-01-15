@@ -7,7 +7,7 @@ import type {
 } from "./types";
 import { colors, formatTime, formatData } from "./formatter";
 
-export class RequestEventLogger implements WideEventLogger {
+class RequestEventLogger implements WideEventLogger {
   private startTime: number;
   private fields: Map<string, LogData> = new Map();
   private errorData?: ErrorData;
@@ -86,7 +86,7 @@ export class RequestEventLogger implements WideEventLogger {
   }
 }
 
-export function createLogger(
+function createLogger(
   requestId: string,
   method: string,
   path: string,
@@ -94,3 +94,32 @@ export function createLogger(
 ): FlushableLogger {
   return new RequestEventLogger(requestId, method, path, useJson);
 }
+
+function logServerStart(
+  serverUrl: string,
+  userData: LogData,
+  useJson: boolean,
+): void {
+  const time = formatTime();
+
+  if (useJson) {
+    const record = {
+      timestamp: new Date().toISOString(),
+      event: "server_start",
+      url: serverUrl,
+      ...userData,
+    };
+    console.log(JSON.stringify(record));
+  } else {
+    console.log(
+      `\n${colors.dim}[${time}]${colors.reset} ` +
+        `${colors.green}SERVER STARTED${colors.reset}`,
+    );
+    console.log(`  ${colors.blue}url:${colors.reset} ${serverUrl}`);
+    for (const [key, value] of Object.entries(userData)) {
+      console.log(`  ${colors.blue}${key}:${colors.reset} ${JSON.stringify(value)}`);
+    }
+  }
+}
+
+export { createLogger, logServerStart };

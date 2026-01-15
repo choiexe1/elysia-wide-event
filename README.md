@@ -14,6 +14,7 @@ Inspired by [Logging Sucks](https://loggingsucks.com/) - the wide event pattern 
 
 ## Features
 
+- **Server Start Log**: Log custom data on server startup with `start` option
 - **Context Accumulation**: Collect data throughout request lifecycle via `wideEvent.set()`
 - **Flexible Output**: Pretty colored output or JSON - you choose
 - **Request ID**: Auto-generates or extracts from `x-request-id` header
@@ -55,14 +56,16 @@ wideEvent({
   generateRequestId: () => crypto.randomUUID(),
   requestIdHeader: "x-request-id",
   json: false,
+  start: { env: "production", version: "1.0.0" },
 });
 ```
 
-| Option              | Type           | Default             | Description                             |
-| ------------------- | -------------- | ------------------- | --------------------------------------- |
-| `generateRequestId` | `() => string` | `crypto.randomUUID` | Custom request ID generator             |
-| `requestIdHeader`   | `string`       | `"x-request-id"`    | Header for incoming request ID          |
-| `json`              | `boolean`      | `false`             | Output as JSON instead of pretty format |
+| Option              | Type           | Default             | Description                                           |
+| ------------------- | -------------- | ------------------- | ----------------------------------------------------- |
+| `generateRequestId` | `() => string` | `crypto.randomUUID` | Custom request ID generator                           |
+| `requestIdHeader`   | `string`       | `"x-request-id"`    | Header for incoming request ID                        |
+| `json`              | `boolean`      | `false`             | Output as JSON instead of pretty format               |
+| `start`             | `LogData`      | `undefined`         | Custom data to log on server startup (URL auto-added) |
 
 ## API
 

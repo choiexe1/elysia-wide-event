@@ -14,6 +14,7 @@
 
 ## 기능
 
+- **서버 시작 로그**: `start` 옵션으로 서버 시작 시 커스텀 데이터 로깅
 - **컨텍스트 수집**: `wideEvent.set()`으로 요청 생명주기 전반에 걸쳐 데이터 수집
 - **유연한 출력**: 컬러 출력 또는 JSON - 선택 가능
 - **Request ID**: `x-request-id` 헤더에서 추출하거나 자동 생성
@@ -55,14 +56,16 @@ wideEvent({
   generateRequestId: () => crypto.randomUUID(),
   requestIdHeader: "x-request-id",
   json: false,
+  start: { env: "production", version: "1.0.0" },
 });
 ```
 
-| 옵션                | 타입           | 기본값              | 설명                      |
-| ------------------- | -------------- | ------------------- | ------------------------- |
-| `generateRequestId` | `() => string` | `crypto.randomUUID` | 커스텀 Request ID 생성기  |
-| `requestIdHeader`   | `string`       | `"x-request-id"`    | Request ID를 가져올 헤더  |
-| `json`              | `boolean`      | `false`             | Pretty 대신 JSON으로 출력 |
+| 옵션                | 타입           | 기본값              | 설명                                        |
+| ------------------- | -------------- | ------------------- | ------------------------------------------- |
+| `generateRequestId` | `() => string` | `crypto.randomUUID` | 커스텀 Request ID 생성기                    |
+| `requestIdHeader`   | `string`       | `"x-request-id"`    | Request ID를 가져올 헤더                    |
+| `json`              | `boolean`      | `false`             | Pretty 대신 JSON으로 출력                   |
+| `start`             | `LogData`      | `undefined`         | 서버 시작 시 로깅할 커스텀 데이터 (URL 자동 포함) |
 
 ## API
 

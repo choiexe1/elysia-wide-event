@@ -1,6 +1,6 @@
 {
   "name": "elysia-wide-event",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Wide event logging plugin for Elysia - structured logging with request context",
   "author": "Jay Choi",
   "license": "MIT",

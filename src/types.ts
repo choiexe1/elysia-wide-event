@@ -2,16 +2,11 @@ export interface LogData {
   [key: string]: unknown;
 }
 
-export interface ErrorData {
-  type: string;
-  code?: string;
-  message?: string;
-  [key: string]: unknown;
-}
+
 
 export interface WideEventLogger {
   set: (key: string, data: LogData) => void;
-  error: (error: ErrorData) => void;
+  error: (error: LogData) => void;
 }
 
 export interface WideEventOptions {
@@ -70,7 +65,7 @@ export interface WideEventRecord {
   path: string;
   status?: number;
   duration_ms?: number;
-  error?: ErrorData;
+  error?: LogData;
   [key: string]: unknown;
 }
 

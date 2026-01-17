@@ -77,12 +77,13 @@ wideEvent({
 wideEvent.set("auth", { userId: "123", role: "admin" });
 ```
 
-### `wideEvent.error({ type, message })`
+### `wideEvent.error(data)`
 
-에러 상세 정보 로깅.
+에러 상세 정보 로깅. 어떤 객체든 허용.
 
 ```typescript
 wideEvent.error({ type: "ValidationError", message: "Invalid email" });
+wideEvent.error({ code: "E001", reason: "timeout" });
 ```
 
 ## 요구사항

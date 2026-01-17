@@ -77,12 +77,13 @@ Add context to the current request log.
 wideEvent.set("auth", { userId: "123", role: "admin" });
 ```
 
-### `wideEvent.error({ type, message })`
+### `wideEvent.error(data)`
 
-Log error details.
+Log error details. Accepts any object.
 
 ```typescript
 wideEvent.error({ type: "ValidationError", message: "Invalid email" });
+wideEvent.error({ code: "E001", reason: "timeout" });
 ```
 
 ## Requirements

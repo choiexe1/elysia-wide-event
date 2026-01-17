@@ -2,12 +2,7 @@ import { Elysia } from "elysia";
 import type { WideEventOptions, FlushableLogger } from "./types";
 import { createLogger, logServerStart } from "./logger";
 
-export type {
-  LogData,
-  ErrorData,
-  WideEventLogger,
-  WideEventOptions,
-} from "./types";
+export type { LogData, WideEventLogger, WideEventOptions } from "./types";
 
 export const wideEvent = (options: WideEventOptions = {}) => {
   const {

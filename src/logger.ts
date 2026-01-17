@@ -1,6 +1,5 @@
 import type {
   LogData,
-  ErrorData,
   WideEventLogger,
   WideEventRecord,
   FlushableLogger,
@@ -10,7 +9,7 @@ import { colors, formatTime, formatData } from "./formatter";
 class RequestEventLogger implements WideEventLogger {
   private startTime: number;
   private fields: Map<string, LogData> = new Map();
-  private errorData?: ErrorData;
+  private errorData?: LogData;
   private headerTime: string;
 
   constructor(
@@ -27,7 +26,7 @@ class RequestEventLogger implements WideEventLogger {
     this.fields.set(key, data);
   }
 
-  error(error: ErrorData): void {
+  error(error: LogData): void {
     this.errorData = error;
   }
 
@@ -56,10 +55,7 @@ class RequestEventLogger implements WideEventLogger {
     }
 
     if (this.errorData) {
-      const errorMsg = this.errorData.message
-        ? `${this.errorData.type}: ${this.errorData.message}`
-        : this.errorData.type;
-      console.log(`  ${colors.red}✗${colors.reset} ${errorMsg}`);
+      console.log(`  ${colors.red}error:${colors.reset} ${formatData(this.errorData)}`);
     }
   }
 
